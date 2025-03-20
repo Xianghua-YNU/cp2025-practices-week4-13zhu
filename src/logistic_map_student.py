@@ -3,6 +3,13 @@ import matplotlib.pyplot as plt
 
 
 def logistic_iteration(r, x0, num_iter):
+    """
+    此函数用于执行Logistic模型的迭代计算
+    :param r: 参数r
+    :param x0: 初始值
+    :param num_iter: 迭代次数
+    :return: 每次迭代后的x值数组
+    """
     x = np.zeros(num_iter)
     x[0] = x0
     for i in range(1, num_iter):
@@ -27,10 +34,11 @@ for i, r in enumerate(r_values):
     if r == 2:
         print(f"当 r = {r} 时，x 趋于 {x[-1]}，没有分岔。")
     elif r == 3.2:
-        print(f"当 r = {r} 时，x 趋于 {x[-20:].min()} 和 {x[-20:].max()}，周期2分岔。")
+        stable_values = np.unique(np.round(x[-20:], 5))
+        print(f"当 r = {r} 时，x 趋于 {stable_values}，周期2分岔。")
     elif r == 3.45:
-        unique_values = np.unique(np.round(x[-20:], 4))
-        print(f"当 r = {r} 时，x 趋于 {unique_values}，周期4分岔。")
+        stable_values = np.unique(np.round(x[-20:], 5))
+        print(f"当 r = {r} 时，x 趋于 {stable_values}，周期4分岔。")
     elif r == 3.6:
         print(f"当 r = {r} 时，x 的取值没有明确趋向，混沌。")
 
@@ -56,3 +64,4 @@ plt.title('费根鲍姆图')
 plt.xlabel('r')
 plt.ylabel('x')
 plt.show()
+    
