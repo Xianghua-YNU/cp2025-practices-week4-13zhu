@@ -55,4 +55,4 @@ for i, r in enumerate(r_range):
 plt.title('费根鲍姆图')
 plt.xlabel('r')
 plt.ylabel('x')
-plt.show()    
+plt.show()
